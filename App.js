@@ -1,25 +1,16 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 function App() {
-  const innerDiv = useRef();
+
   useEffect(() => {
-    const { current } = innerDiv;
-
-    function getDimensions() {
-      console.log(current);
-    }
-
-    window.addEventListener('load', getDimensions)
-
-    return () => {
-      window.removeEventListener('load', getDimensions);
-    }
-
-  }, [])
+    let element = document.getElementById('inner');
+    
+    console.log('Width: ', element.offsetWidth, ' Height: ', element.offsetHeight);
+  })
 
   return (
     <div class="container">
-      <div id="inner" ref={innerDiv}>Hello, World</div>
+      <div id="inner">Hello, World</div>
     </div>
   );
 }
